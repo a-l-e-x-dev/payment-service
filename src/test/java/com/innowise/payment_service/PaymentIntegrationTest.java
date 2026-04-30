@@ -46,6 +46,9 @@ class PaymentIntegrationTest {
         registry.add("spring.kafka.bootstrap-servers", kafkaContainer::getBootstrapServers);
         registry.add("external.payment-api.url", () -> wireMockServer.baseUrl() + "/random");
         registry.add("logging.level.org.mongodb.driver.cluster", () -> "WARN");
+        registry.add("spring.kafka.producer.key-serializer", () -> "org.apache.kafka.common.serialization.StringSerializer");
+        registry.add("spring.kafka.producer.value-serializer", () -> "org.springframework.kafka.support.serializer.JsonSerializer");
+    }
     }
 
     @Autowired
