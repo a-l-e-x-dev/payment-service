@@ -1,6 +1,5 @@
 package com.innowise.payment_service;
 
-import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import com.innowise.payment_service.dto.PaymentCreateRequest;
 import com.innowise.payment_service.dto.PaymentResponse;
@@ -46,9 +45,9 @@ class PaymentIntegrationTest {
         registry.add("spring.kafka.bootstrap-servers", kafkaContainer::getBootstrapServers);
         registry.add("external.payment-api.url", () -> wireMockServer.baseUrl() + "/random");
         registry.add("logging.level.org.mongodb.driver.cluster", () -> "WARN");
+
         registry.add("spring.kafka.producer.key-serializer", () -> "org.apache.kafka.common.serialization.StringSerializer");
         registry.add("spring.kafka.producer.value-serializer", () -> "org.springframework.kafka.support.serializer.JsonSerializer");
-    }
     }
 
     @Autowired
@@ -72,7 +71,6 @@ class PaymentIntegrationTest {
         assertNotNull(response.getId());
         assertEquals(PaymentStatus.SUCCESS, response.getStatus());
         assertEquals(100L, response.getOrderId());
-
     }
 
     @Test
