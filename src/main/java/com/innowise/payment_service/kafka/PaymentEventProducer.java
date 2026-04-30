@@ -1,4 +1,4 @@
-package kafka;
+package com.innowise.payment_service.kafka;
 
 import com.innowise.payment_service.event.PaymentEvent;
 import lombok.RequiredArgsConstructor;

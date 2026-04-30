@@ -8,7 +8,7 @@ import com.innowise.payment_service.enums.PaymentStatus;
 import com.innowise.payment_service.event.PaymentEvent;
 import com.innowise.payment_service.mapper.PaymentMapper;
 import com.innowise.payment_service.repository.PaymentRepository;
-import kafka.PaymentEventProducer;
+import com.innowise.payment_service.kafka.PaymentEventProducer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
