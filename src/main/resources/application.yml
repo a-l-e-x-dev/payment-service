@@ -1,0 +1,23 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: payment-service
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/payment_db
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: order-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+jwt:
+  secret: "NDQ1Mjc1Mzg1OTU1NjQ1MzY1NDQxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA"
